@@ -4,10 +4,10 @@
 
 int Claw_Open = 0;
 
-int _Servo2
-int _Servo3 
-int _Servo4
-int _Servo5
+int _Servo2 = 0;
+int _Servo3 = 0; 
+int _Servo4 = 0;
+int _Servo5 = 0;
 // initiate servo on port 2
 Servo servo_2;
 
@@ -52,13 +52,18 @@ void setup()
 void loop()
 {
   // move servo to Analog 0's input
-  servo_2.write(map(analogRead(A0), 0, 1023, 0, 180));
+  
+_Servo2 = analogRead(A0);
+  
+  servo_2.write(map(_Servo2, 0, 1023, 0, 180));
   
   // move servo to Analog 1's input
-  servo_3.write(map(analogRead(A1), 0, 1023, 0, 180));
+_Servo3 = analogRead(A1);
+  servo_3.write(map(_Servo3, 0, 1023, 0, 180));
   
   // move servo to Analog 2's input
-  servo_4.write(map(analogRead(A2), 0, 1023, 0, 180));
+_Servo4 = analogRead(A2);
+  servo_4.write(map(_Servo4, 0, 1023, 0, 180));
  
   // If Claw_Open variable is zero & digital pin 12 reads high
   if (0 == Claw_Open && digitalRead(12) == HIGH) {
