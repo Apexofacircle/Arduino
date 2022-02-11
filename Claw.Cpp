@@ -4,6 +4,10 @@
 
 int Claw_Open = 0;
 
+int _Servo2
+int _Servo3 
+int _Servo4
+int _Servo5
 // initiate servo on port 2
 Servo servo_2;
 
