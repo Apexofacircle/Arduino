@@ -1,68 +1,46 @@
-// C++ code
-//
+// libraries 
 #include <Servo.h>
 
+// variables
 int Claw_Open = 0;
-
 int _Servo2 = 0;
 int _Servo3 = 0; 
 int _Servo4 = 0;
 int _Servo5 = 0;
-// initiate servo on port 2
-Servo servo_2;
 
-// initiate servo on digital port 3
-Servo servo_3;
-
-// initiate servo on digital port 4
-Servo servo_4;
-
-// initiate servo on digital port 5
-Servo servo_5;
+// initiate servos
+Servo servo_2; //bace
+Servo servo_3; //elbow
+Servo servo_4; //wrist
+Servo servo_5; //claw
+Servo servo_6; //claw
 
 // Run at boot up
 void setup()
 {
-  // Set pin mode for Analog 0 to INPUT
+  // Set pin modes
   pinMode(A0, INPUT);
-  
-  // Atach Servo on pin 2
-  servo_2.attach(2, 500, 2500);
-
-  // Set pin mode for Analog 1 to INPUT
   pinMode(A1, INPUT);
-  
-   // Atach Servo on pin 3
-  servo_3.attach(3, 500, 2500);
-
-  // Set pin mode for Analog 2 to INPUT
   pinMode(A2, INPUT);
-  
-   // Atach Servo on pin 4
-  servo_4.attach(4, 500, 2500);
-
-  // Set pin mode for Digital 12 to INPUT
   pinMode(12, INPUT);
   
-  // Atach servo on pin 5
+  // Atach servos 
+  servo_2.attach(2, 500, 2500);
+  servo_3.attach(3, 500, 2500);
+  servo_4.attach(4, 500, 2500);
   servo_5.attach(5, 500, 2500);
-
 }
 
 void loop()
 {
-  // move servo to Analog 0's input
-  
-_Servo2 = analogRead(A0);
-  
+  //Set motor positions baced off of potentiometer positions
+  _Servo2 = analogRead(A0);
   servo_2.write(map(_Servo2, 0, 1023, 0, 180));
-  
-  // move servo to Analog 1's input
-_Servo3 = analogRead(A1);
+
+  _Servo3 = analogRead(A1);
   servo_3.write(map(_Servo3, 0, 1023, 0, 180));
-  
-  // move servo to Analog 2's input
-_Servo4 = analogRead(A2);
+
+  _Servo4 = analogRead(A2);
   servo_4.write(map(_Servo4, 0, 1023, 0, 180));
  
   // If Claw_Open variable is zero & digital pin 12 reads high
@@ -79,7 +57,6 @@ _Servo4 = analogRead(A2);
     
     // If Claw_Open variable is zero & digital pin 12 reads high is not true
   } else {
-    // Claw_Open variable is one & digital pin 12 reads high
     if (1 == Claw_Open && digitalRead(12) == HIGH) {
       
       // Set Claw_Open variable to zero
