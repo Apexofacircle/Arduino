@@ -28,7 +28,7 @@ void setup()
   servo_3.attach(3, 500, 2500);
   servo_4.attach(4, 500, 2500);
   servo_5.attach(5, 500, 2500);
-}
+} 
 
 void loop()
 {//Set motor positions baced off of potentiometer positions
