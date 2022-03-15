@@ -43,30 +43,20 @@ void loop()
   _Servo4 = analogRead(A2);
   servo_4.write(map(_Servo4, 0, 1023, 0, 180));
  
-  // If Claw_Open variable is zero & digital pin 12 reads high
+  // open and close claw at press of a button (linked to pin 12)
   if (0 == Claw_Open && digitalRead(12) == HIGH) {
-    
-    // set Claw_Open variable to 1
+
     Claw_Open = 1;
-    
-    // Move servo to specified rotation
     servo_5.write(map(0, 0, 1023, 179, 180));
+    servo_6.write(map(0, 0, 1023, 179, -180));
+    delay(1000); 
     
-    // delay 
-    delay(1000); // Wait for 1000 millisecond(s)
-    
-    // If Claw_Open variable is zero & digital pin 12 reads high is not true
   } else {
     if (1 == Claw_Open && digitalRead(12) == HIGH) {
-      
-      // Set Claw_Open variable to zero
       Claw_Open = 0;
-     
-      // Move servo to specified rotation
       servo_5.write(map(0, 0, 1023, 1, 180));
-      
-      //Delay
-      delay(1000); // Wait for 1000 millisecond(s)
+      servo_6.write(map(0, 0, 1023, 1, -180));
+      delay(1000);
     }
   }
 }
