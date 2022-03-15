@@ -17,8 +17,7 @@ Servo servo_6; //claw
 
 // Run at boot up
 void setup()
-{
-  // Set pin modes
+{// Set pin modes
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
@@ -32,8 +31,7 @@ void setup()
 }
 
 void loop()
-{
-  //Set motor positions baced off of potentiometer positions
+{//Set motor positions baced off of potentiometer positions
   _Servo2 = analogRead(A0);
   servo_2.write(map(_Servo2, 0, 1023, 0, 180));
 
