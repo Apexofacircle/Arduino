@@ -28,25 +28,20 @@ void setup()
   servo_3.attach(3, 500, 2500);
   servo_4.attach(4, 500, 2500);
   servo_5.attach(5, 500, 2500);
-  servo_6.attach(5, 500, 2500);
-  Serial.begin(9600);
-} 
+}
 
 void loop()
 {//Set motor positions baced off of potentiometer positions
   _Servo2 = analogRead(A0);
   servo_2.write(map(_Servo2, 0, 1023, 0, 180));
-  //Serial.println(_Servo2);
-  
-  _Servoo3 = analogRead(A1);
+
+  _Servo3 = analogRead(A1);
   servo_3.write(map(_Servo3, 0, 1023, 0, 180));
-  Serial.println(_Servo3);
 
   _Servo4 = analogRead(A2);
   servo_4.write(map(_Servo4, 0, 1023, 0, 180));
-  //Serial.println(_Servo4);
  
-  // open and close claw at press of a button (linked to pin 12)
+   //open and close claw at press of a button (linked to pin 12)
   if (0 == Claw_Open && digitalRead(12) == HIGH) {
 
     Claw_Open = 1;
@@ -60,6 +55,7 @@ void loop()
       servo_5.write(map(0, 0, 1023, 1, 180));
       servo_6.write(map(0, 0, 1023, 1, -180));
       delay(1000);
-    }
+
+   
   }
-}
+}}
